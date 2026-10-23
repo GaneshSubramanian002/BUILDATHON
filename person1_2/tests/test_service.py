@@ -25,6 +25,14 @@ class LiveIntegrationTests(unittest.TestCase):
         time.sleep(0.05)
         self.assertEqual(len(items), count)
 
+    def test_cycle_mode_changes_scenarios_without_exposing_labels(self):
+        service = ReadingService(interval_seconds=0.01, scenario_mode="cycle")
+        readings = [service.generate_once() for _ in range(5)]
+        scores = [item.prediction["anomaly_score"] for item in readings]
+        self.assertGreater(max(scores) - min(scores), 0.001)
+        for item in readings:
+            self.assertNotIn("fault_type", item.public_json())
+
 
 if __name__ == "__main__":
     unittest.main()

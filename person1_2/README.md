@@ -1,0 +1,34 @@
+# Person 1 + Person 2 live integration
+
+This package generates one-second raw sensor readings with Person 1 and immediately classifies each reading with Person 2's frozen v2.2 model.
+
+Run five readings:
+
+```powershell
+python -m person1_2.service --count 5
+```
+
+Run continuously until `Ctrl+C`:
+
+```powershell
+python -m person1_2.service --interval 1
+```
+
+For the hackathon showcase, cycle through all five conditions automatically:
+
+```powershell
+python -m person1_2.service --showcase --interval 1
+```
+
+The cycle uses normal, rotor unbalance, misalignment, inner-race fault, and outer-race fault, with varying loads. Use `--mode random` for a random condition, severity, and load on every reading.
+
+Person 3 can import `ReadingService`, provide a callback, and control it directly:
+
+```python
+from person1_2 import ReadingService
+service = ReadingService(callback=lambda item: send_to_frontend(item.public_json()))
+service.start()
+service.stop()
+```
+
+Simulator ground truth stays out of `public_json()` and is never sent to the model.

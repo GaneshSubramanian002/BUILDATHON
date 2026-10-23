@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Callable, Any
 
-from person1.sensor_simulator import SensorSimulator
+from person1.sensor_simulator import FAULT_SEVERITIES, VALID_LOADS, SensorSimulator
 from person2.src.audit_raw_signals import targeted
 from person2.src.order_features import order_features
 from person2.src.prediction import predict
@@ -87,9 +87,12 @@ class ReadingService:
         seed: int = 20261023,
         equipment_id: str = "MOTOR_01",
         callback: Callable[[ProcessedReading], None] | None = None,
+        scenario_mode: str = "fixed",
     ) -> None:
         if interval_seconds <= 0:
             raise ValueError("interval_seconds must be positive")
+        if scenario_mode not in {"fixed", "cycle", "random"}:
+            raise ValueError("scenario_mode must be fixed, cycle, or random")
         SensorSimulator.validate_scenario(fault_type, severity_rank, load_nm)
         self.fault_type = fault_type
         self.severity_rank = severity_rank
@@ -97,10 +100,34 @@ class ReadingService:
         self.interval_seconds = float(interval_seconds)
         self.equipment_id = equipment_id
         self.callback = callback
+        self.scenario_mode = scenario_mode
         self.simulator = SensorSimulator(seed=seed)
+        import numpy as np
+        self._scenario_rng = np.random.default_rng(seed + 1)
+        self._scenario_index = 0
         self._stop_event = threading.Event()
         self._thread: threading.Thread | None = None
         self._counter = 0
+
+    def _scenario(self) -> tuple[str, int, float]:
+        if self.scenario_mode == "fixed":
+            return self.fault_type, self.severity_rank, self.load_nm
+        if self.scenario_mode == "random":
+            fault = str(self._scenario_rng.choice(list(FAULT_SEVERITIES)))
+            severity = int(self._scenario_rng.choice(FAULT_SEVERITIES[fault]))
+            load = float(self._scenario_rng.choice(VALID_LOADS))
+            return fault, severity, load
+        scenarios = [
+            ("normal", 0),
+            ("rotor_unbalance", 3),
+            ("misalignment", 2),
+            ("inner_race_fault", 3),
+            ("outer_race_fault", 3),
+        ]
+        fault, severity = scenarios[self._scenario_index % len(scenarios)]
+        load = float(VALID_LOADS[self._scenario_index % len(VALID_LOADS)])
+        self._scenario_index += 1
+        return fault, severity, load
 
     @property
     def running(self) -> bool:
@@ -110,11 +137,12 @@ class ReadingService:
         """Generate one raw reading and synchronously return its ML result."""
         now = datetime.now(timezone.utc)
         self._counter += 1
+        fault_type, severity_rank, load_nm = self._scenario()
         reading = self.simulator.generate_reading(
             reading_id=f"LIVE_{self._counter:06d}",
-            fault_type=self.fault_type,
-            severity_rank=self.severity_rank,
-            load_nm=self.load_nm,
+            fault_type=fault_type,
+            severity_rank=severity_rank,
+            load_nm=load_nm,
             timestamp=now,
             sequence_id="LIVE_SEQUENCE",
             sequence_step=self._counter - 1,
@@ -168,6 +196,8 @@ def main() -> None:
     parser.add_argument("--load", type=float, default=2.0, choices=[0.0, 2.0, 4.0])
     parser.add_argument("--interval", type=float, default=1.0)
     parser.add_argument("--count", type=int, default=None, help="Stop after this many readings; omit for continuous mode")
+    parser.add_argument("--mode", choices=["fixed", "cycle", "random"], default="fixed", help="Select fixed, cycle, or random scenarios")
+    parser.add_argument("--showcase", action="store_true", help="Alias for --mode cycle")
     args = parser.parse_args()
 
     def print_reading(item: ProcessedReading) -> None:
@@ -179,6 +209,7 @@ def main() -> None:
         load_nm=args.load,
         interval_seconds=args.interval,
         callback=print_reading,
+        scenario_mode="cycle" if args.showcase else args.mode,
     )
     service.start(max_readings=args.count)
     try:
