@@ -6,6 +6,7 @@ This repository contains the coordinated four-person project for detecting abnor
 
 - **Person 1:** `person1/` generates independent vibration, current, temperature, load, and RPM test readings. Its labels remain in the offline ground-truth file.
 - **Person 2:** `person2/` contains the frozen v2.2 model, feature functions, input contract, examples, and integration instructions.
+- **Person 1 + 2 live bridge:** `person1_2/` generates a reading every second, extracts the v2.2 features, calls the model, and provides `start()`/`stop()` controls for the backend.
 - **Person 3:** connect the backend to `person2.src.prediction.predict()` and return the documented prediction fields. Convert `ValueError` to HTTP 400 and missing-model errors to HTTP 503.
 - **Person 4:** connect the dashboard to the backend response. Display raw monitoring values, anomaly state, risk, condition, recommendation, and history.
 
