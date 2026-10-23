@@ -4,8 +4,6 @@ import json
 import numpy as np
 import pandas as pd
 from scipy.io import loadmat
-from nptdms import TdmsFile
-from .extract_features import pair_recordings, canonical_stem, parse_recording_name
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -34,6 +32,11 @@ def targeted(values, fs, prefix):
 
 
 def main():
+    # These imports are needed only when auditing the raw TDMS/MAT download.
+    # Live inference uses targeted() and should not require the TDMS reader.
+    from nptdms import TdmsFile
+    from .extract_features import pair_recordings, canonical_stem, parse_recording_name
+
     pairs = pair_recordings(ROOT / 'data/raw/current_temp', ROOT / 'data/raw/vibration')
     audit, rows = [], []
     for i, (tdms_path, mat_path) in enumerate(pairs):
