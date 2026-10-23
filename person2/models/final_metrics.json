@@ -1,0 +1,348 @@
+{
+  "schema_version": "2.2.0",
+  "evaluation_type": "development grouped CV; ensemble settings selected on these folds; 1200 RPM external validation excluded from selection",
+  "decision_threshold": 0.5,
+  "order_probability_share": 0.25,
+  "folds": [
+    {
+      "train_recordings": [
+        "0Nm_BPFI_10",
+        "0Nm_BPFO_10",
+        "0Nm_BPFO_30",
+        "0Nm_Misalign_01",
+        "0Nm_Misalign_03",
+        "0Nm_Misalign_05",
+        "0Nm_Unbalance_1169mg",
+        "0Nm_Unbalance_1751mg",
+        "0Nm_Unbalance_3318mg",
+        "2Nm_BPFI_10",
+        "2Nm_BPFI_30",
+        "2Nm_BPFO_03",
+        "2Nm_BPFO_10",
+        "2Nm_Misalign_01",
+        "2Nm_Misalign_03",
+        "2Nm_Misalign_05",
+        "2Nm_Normal",
+        "2Nm_Unbalance_0583mg",
+        "2Nm_Unbalance_1169mg",
+        "2Nm_Unbalance_1751mg",
+        "4Nm_BPFI_03",
+        "4Nm_BPFI_10",
+        "4Nm_BPFI_30",
+        "4Nm_BPFO_10",
+        "4Nm_BPFO_30",
+        "4Nm_Normal",
+        "4Nm_Unbalance_0583mg",
+        "4Nm_Unbalance_1169mg",
+        "4Nm_Unbalance_1751mg",
+        "4Nm_Unbalance_3318mg"
+      ],
+      "test_recordings": [
+        "0Nm_BPFI_03",
+        "0Nm_BPFI_30",
+        "0Nm_BPFO_03",
+        "0Nm_Normal",
+        "0Nm_Unbalance_0583mg",
+        "0Nm_Unbalance_2239mg",
+        "2Nm_BPFI_03",
+        "2Nm_BPFO_30",
+        "2Nm_Unbalance_2239mg",
+        "2Nm_Unbalance_3318mg",
+        "4Nm_BPFO_03",
+        "4Nm_Misalign_01",
+        "4Nm_Misalign_03",
+        "4Nm_Misalign_05",
+        "4Nm_Unbalance_2239mg"
+      ]
+    },
+    {
+      "train_recordings": [
+        "0Nm_BPFI_03",
+        "0Nm_BPFI_10",
+        "0Nm_BPFI_30",
+        "0Nm_BPFO_03",
+        "0Nm_BPFO_10",
+        "0Nm_Misalign_03",
+        "0Nm_Misalign_05",
+        "0Nm_Normal",
+        "0Nm_Unbalance_0583mg",
+        "0Nm_Unbalance_2239mg",
+        "2Nm_BPFI_03",
+        "2Nm_BPFI_30",
+        "2Nm_BPFO_03",
+        "2Nm_BPFO_10",
+        "2Nm_BPFO_30",
+        "2Nm_Misalign_05",
+        "2Nm_Normal",
+        "2Nm_Unbalance_0583mg",
+        "2Nm_Unbalance_1751mg",
+        "2Nm_Unbalance_2239mg",
+        "2Nm_Unbalance_3318mg",
+        "4Nm_BPFI_10",
+        "4Nm_BPFO_03",
+        "4Nm_Misalign_01",
+        "4Nm_Misalign_03",
+        "4Nm_Misalign_05",
+        "4Nm_Unbalance_0583mg",
+        "4Nm_Unbalance_1169mg",
+        "4Nm_Unbalance_2239mg",
+        "4Nm_Unbalance_3318mg"
+      ],
+      "test_recordings": [
+        "0Nm_BPFO_30",
+        "0Nm_Misalign_01",
+        "0Nm_Unbalance_1169mg",
+        "0Nm_Unbalance_1751mg",
+        "0Nm_Unbalance_3318mg",
+        "2Nm_BPFI_10",
+        "2Nm_Misalign_01",
+        "2Nm_Misalign_03",
+        "2Nm_Unbalance_1169mg",
+        "4Nm_BPFI_03",
+        "4Nm_BPFI_30",
+        "4Nm_BPFO_10",
+        "4Nm_BPFO_30",
+        "4Nm_Normal",
+        "4Nm_Unbalance_1751mg"
+      ]
+    },
+    {
+      "train_recordings": [
+        "0Nm_BPFI_03",
+        "0Nm_BPFI_30",
+        "0Nm_BPFO_03",
+        "0Nm_BPFO_30",
+        "0Nm_Misalign_01",
+        "0Nm_Normal",
+        "0Nm_Unbalance_0583mg",
+        "0Nm_Unbalance_1169mg",
+        "0Nm_Unbalance_1751mg",
+        "0Nm_Unbalance_2239mg",
+        "0Nm_Unbalance_3318mg",
+        "2Nm_BPFI_03",
+        "2Nm_BPFI_10",
+        "2Nm_BPFO_30",
+        "2Nm_Misalign_01",
+        "2Nm_Misalign_03",
+        "2Nm_Unbalance_1169mg",
+        "2Nm_Unbalance_2239mg",
+        "2Nm_Unbalance_3318mg",
+        "4Nm_BPFI_03",
+        "4Nm_BPFI_30",
+        "4Nm_BPFO_03",
+        "4Nm_BPFO_10",
+        "4Nm_BPFO_30",
+        "4Nm_Misalign_01",
+        "4Nm_Misalign_03",
+        "4Nm_Misalign_05",
+        "4Nm_Normal",
+        "4Nm_Unbalance_1751mg",
+        "4Nm_Unbalance_2239mg"
+      ],
+      "test_recordings": [
+        "0Nm_BPFI_10",
+        "0Nm_BPFO_10",
+        "0Nm_Misalign_03",
+        "0Nm_Misalign_05",
+        "2Nm_BPFI_30",
+        "2Nm_BPFO_03",
+        "2Nm_BPFO_10",
+        "2Nm_Misalign_05",
+        "2Nm_Normal",
+        "2Nm_Unbalance_0583mg",
+        "2Nm_Unbalance_1751mg",
+        "4Nm_BPFI_10",
+        "4Nm_Unbalance_0583mg",
+        "4Nm_Unbalance_1169mg",
+        "4Nm_Unbalance_3318mg"
+      ]
+    }
+  ],
+  "binary_report": {
+    "normal": {
+      "precision": 0.6714743589743589,
+      "recall": 0.7759259259259259,
+      "f1-score": 0.7199312714776632,
+      "support": 540.0
+    },
+    "abnormal": {
+      "precision": 0.9687822497420021,
+      "recall": 0.9482323232323232,
+      "f1-score": 0.9583971413986728,
+      "support": 3960.0
+    },
+    "accuracy": 0.9275555555555556,
+    "macro avg": {
+      "precision": 0.8201283043581805,
+      "recall": 0.8620791245791246,
+      "f1-score": 0.839164206438168,
+      "support": 4500.0
+    },
+    "weighted avg": {
+      "precision": 0.9331053028498849,
+      "recall": 0.9275555555555556,
+      "f1-score": 0.9297812370081515,
+      "support": 4500.0
+    }
+  },
+  "binary_confusion_matrix": [
+    [
+      419,
+      121
+    ],
+    [
+      205,
+      3755
+    ]
+  ],
+  "end_to_end_fault_report": {
+    "inner_race_fault": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 540.0
+    },
+    "misalignment": {
+      "precision": 1.0,
+      "recall": 0.6666666666666666,
+      "f1-score": 0.8,
+      "support": 1080.0
+    },
+    "normal": {
+      "precision": 0.6714743589743589,
+      "recall": 0.7759259259259259,
+      "f1-score": 0.7199312714776632,
+      "support": 540.0
+    },
+    "outer_race_fault": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 540.0
+    },
+    "rotor_unbalance": {
+      "precision": 0.7687861271676301,
+      "recall": 0.8866666666666667,
+      "f1-score": 0.8235294117647058,
+      "support": 1800.0
+    },
+    "accuracy": 0.8477777777777777,
+    "macro avg": {
+      "precision": 0.8880520972283978,
+      "recall": 0.8658518518518518,
+      "f1-score": 0.8686921366484738,
+      "support": 4500.0
+    },
+    "weighted avg": {
+      "precision": 0.8680913739439752,
+      "recall": 0.8477777777777777,
+      "f1-score": 0.847803517283202,
+      "support": 4500.0
+    }
+  },
+  "fault_labels": [
+    "inner_race_fault",
+    "misalignment",
+    "normal",
+    "outer_race_fault",
+    "rotor_unbalance"
+  ],
+  "fault_confusion_matrix": [
+    [
+      540,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      720,
+      1,
+      0,
+      359
+    ],
+    [
+      0,
+      0,
+      419,
+      0,
+      121
+    ],
+    [
+      0,
+      0,
+      0,
+      540,
+      0
+    ],
+    [
+      0,
+      0,
+      204,
+      0,
+      1596
+    ]
+  ],
+  "condition_report": {
+    "CRITICAL": {
+      "precision": 0.9046799724707502,
+      "recall": 0.9128472222222223,
+      "f1-score": 0.908745247148289,
+      "support": 2880.0
+    },
+    "NORMAL": {
+      "precision": 0.6714743589743589,
+      "recall": 0.7759259259259259,
+      "f1-score": 0.7199312714776632,
+      "support": 540.0
+    },
+    "WARNING": {
+      "precision": 0.7412371134020619,
+      "recall": 0.6657407407407407,
+      "f1-score": 0.7014634146341463,
+      "support": 1080.0
+    },
+    "accuracy": 0.8371111111111111,
+    "macro avg": {
+      "precision": 0.7724638149490569,
+      "recall": 0.784837962962963,
+      "f1-score": 0.7767133110866995,
+      "support": 4500.0
+    },
+    "weighted avg": {
+      "precision": 0.8374690126746981,
+      "recall": 0.8371111111111111,
+      "f1-score": 0.8363399302644197,
+      "support": 4500.0
+    }
+  },
+  "external_1200_rpm_validation": {
+    "rows": 1178,
+    "normal_recall": 0.7142857142857143,
+    "abnormal_recall": 0.9281129653401797,
+    "accuracy": 0.8556876061120543,
+    "macro_f1": 0.832536125234145,
+    "confusion_matrix": [
+      [
+        285,
+        114
+      ],
+      [
+        56,
+        723
+      ]
+    ]
+  },
+  "training": {
+    "fixed_gate_auxiliary_speeds_rpm": [
+      600
+    ],
+    "fixed_gate_auxiliary_weight": 0.01,
+    "order_gate_auxiliary_speeds_rpm": [
+      600,
+      900
+    ],
+    "order_gate_auxiliary_weight": 0.1
+  }
+}

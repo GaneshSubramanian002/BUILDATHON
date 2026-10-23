@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+person1/generated/
+person2/data/raw/
+person2/data/processed/
+*.mat
+*.tdms
+*.zip

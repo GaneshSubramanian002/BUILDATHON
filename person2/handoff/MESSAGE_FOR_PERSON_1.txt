@@ -1,0 +1,26 @@
+Person 2's improved prototype v2 is ready. Your next task is to build the sensor
+simulator and independent labeled test CSV.
+
+Unzip person2_handoff_v2.zip and start with:
+person2/handoff/PERSON_1_V2.md
+
+Use input_contract.json (72 vibration spectral fields plus load context), integration_examples.json,
+reference_features.csv and simulator_ranges.csv in the same folder.
+These replace our earlier 8/10/59-field messages. Simulate four vibration
+waveforms and call the shared targeted() function, or generate coherent joint
+features. Do not independently randomize all 72 columns. Temperature and
+current are optional dashboard monitoring fields, not v2 ML inputs. No RPM.
+
+Generate normal, inner_race_fault, outer_race_fault, misalignment and
+rotor_unbalance, at 0/2/4 Nm. Keep fault_type and severity_rank only in the
+labeled offline CSV; send sensor fields and metadata only to the backend.
+
+Send one sample payload first. Then generate at least 2,500 test readings in
+multiple sequences. Keep final test data independent of model training and
+submit failures honestly. Healthy recall improved to 77.4% and fault recall is
+94.7% in grouped development evaluation; these are not independent test scores.
+The model still misclassifies some unseen healthy runs;
+do not tune your generator until all predictions look correct.
+
+Evaluation command from repository root:
+python -m person2.src.evaluate_model person1/generated_test_data.csv
