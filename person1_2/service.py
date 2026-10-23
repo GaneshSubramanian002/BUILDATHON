@@ -87,7 +87,7 @@ class ReadingService:
         seed: int = 20261023,
         equipment_id: str = "MOTOR_01",
         callback: Callable[[ProcessedReading], None] | None = None,
-        scenario_mode: str = "fixed",
+        scenario_mode: str = "random",
     ) -> None:
         if interval_seconds <= 0:
             raise ValueError("interval_seconds must be positive")
@@ -196,7 +196,7 @@ def main() -> None:
     parser.add_argument("--load", type=float, default=2.0, choices=[0.0, 2.0, 4.0])
     parser.add_argument("--interval", type=float, default=1.0)
     parser.add_argument("--count", type=int, default=None, help="Stop after this many readings; omit for continuous mode")
-    parser.add_argument("--mode", choices=["fixed", "cycle", "random"], default="fixed", help="Select fixed, cycle, or random scenarios")
+    parser.add_argument("--mode", choices=["fixed", "cycle", "random"], default="random", help="Select fixed, cycle, or random scenarios; random is the default")
     parser.add_argument("--showcase", action="store_true", help="Alias for --mode cycle")
     args = parser.parse_args()
 
