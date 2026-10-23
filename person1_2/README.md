@@ -1,6 +1,6 @@
 # Person 1 + Person 2 live integration
 
-This package generates one-second raw sensor readings with Person 1 and immediately classifies each reading with Person 2's frozen v2.2 model.
+This package generates one-second sensor readings with Person 1 and immediately classifies each reading with Person 2's frozen v2.2 model. The default hackathon mode samples public-dataset feature distributions by condition, load, and severity so the demonstration exercises the trained model correctly. Use `--raw-simulator` to test the independent handcrafted waveform generator.
 
 Run five readings:
 

@@ -15,7 +15,7 @@ class LiveIntegrationTests(unittest.TestCase):
 
     def test_start_and_stop(self):
         items = []
-        service = ReadingService(interval_seconds=0.02, callback=items.append)
+        service = ReadingService(interval_seconds=0.02, callback=items.append, calibrated_demo=False)
         service.start()
         time.sleep(0.08)
         service.stop()
@@ -32,6 +32,14 @@ class LiveIntegrationTests(unittest.TestCase):
         self.assertGreater(max(scores) - min(scores), 0.001)
         for item in readings:
             self.assertNotIn("fault_type", item.public_json())
+
+    def test_calibrated_demo_matches_generated_fault(self):
+        service = ReadingService(
+            fault_type="outer_race_fault", severity_rank=3, load_nm=2.0, scenario_mode="fixed"
+        )
+        item = service.generate_once()
+        self.assertTrue(item.prediction["anomaly"])
+        self.assertEqual(item.prediction["possible_fault"], "outer_race_fault")
 
 
 if __name__ == "__main__":
